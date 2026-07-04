@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maurya Kirana Store – Sabitpur, Ambedkar Nagar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#fff8f4;color:#1a1008;}
+
+/* ── HEADER ── */
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 24px;background:#fff;
+  border-bottom:2px solid #ff6600;
+  position:sticky;top:0;z-index:100;
+}
+.logo-wrap{display:flex;align-items:center;gap:12px;}
+.logo-icon{
+  width:48px;height:48px;background:#ff6600;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:#fff;letter-spacing:-1px;
+}
+.logo-text{font-size:16px;font-weight:700;color:#ff6600;line-height:1.2;}
+.logo-sub{font-size:11px;color:#888;font-weight:400;}
+.header-right{display:flex;gap:10px;align-items:center;}
+.btn-call{
+  background:#ff6600;color:#fff;padding:8px 18px;
+  border-radius:30px;text-decoration:none;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.btn-call:hover{background:#e05500;}
+.btn-whatsapp{
+  background:#25D366;color:#fff;padding:8px 18px;
+  border-radius:30px;text-decoration:none;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.btn-whatsapp:hover{background:#1ebe5d;}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#ff6600 0%,#ff9944 60%,#ffb870 100%);
+  padding:60px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge{
+  display:inline-block;background:rgba(255,255,255,0.25);
+  color:#fff;font-size:12px;font-weight:600;
+  padding:5px 16px;border-radius:20px;
+  border:1px solid rgba(255,255,255,0.4);
+  margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;
+}
+.hero h1{font-size:36px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px;}
+.hero p{font-size:16px;color:rgba(255,255,255,0.92);max-width:480px;margin:0 auto 28px;}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:#ff6600;font-weight:700;font-size:15px;
+  padding:12px 28px;border-radius:30px;text-decoration:none;
+}
+.hero-cta:hover{background:#fff3eb;}
+.hero-stats{
+  display:flex;justify-content:center;gap:32px;
+  margin-top:36px;flex-wrap:wrap;
+}
+.hero-stat{color:#fff;text-align:center;}
+.hero-stat strong{display:block;font-size:28px;font-weight:800;}
+.hero-stat span{font-size:12px;opacity:0.85;}
+
+/* ── SECTION TITLE ── */
+.section-title{
+  text-align:center;padding:48px 20px 32px;
+}
+.section-title h2{font-size:26px;font-weight:700;color:#1a1008;}
+.section-title h2 span{color:#ff6600;}
+.section-title p{color:#888;font-size:14px;margin-top:6px;}
+
+/* ── SEARCH BAR ── */
+.search-wrap{padding:0 20px 24px;max-width:600px;margin:0 auto;}
+.search-bar{
+  display:flex;align-items:center;
+  background:#fff;border:2px solid #ffe0cc;border-radius:40px;
+  padding:4px 6px 4px 18px;gap:8px;
+}
+.search-bar input{
+  flex:1;border:none;outline:none;font-size:14px;font-family:'Poppins',sans-serif;
+  background:transparent;
+}
+.search-bar button{
+  background:#ff6600;color:#fff;border:none;
+  padding:9px 20px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;
+  font-family:'Poppins',sans-serif;
+}
+
+/* ── CATEGORY FILTER ── */
+.cat-filter{
+  display:flex;gap:8px;padding:0 20px 24px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.cat-filter::-webkit-scrollbar{display:none;}
+.cat-btn{
+  white-space:nowrap;background:#fff;color:#555;
+  border:1.5px solid #e0d0c8;border-radius:25px;
+  padding:7px 18px;font-size:13px;font-family:'Poppins',sans-serif;
+  cursor:pointer;transition:all .2s;font-weight:500;
+}
+.cat-btn:hover,.cat-btn.active{background:#ff6600;color:#fff;border-color:#ff6600;}
+
+/* ── PRODUCTS GRID ── */
+.products-section{padding:0 16px 48px;}
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:16px;
+  max-width:1100px;margin:0 auto;
+}
+.product-card{
+  background:#fff;border-radius:16px;
+  border:1.5px solid #ffe8d8;
+  overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  position:relative;
+  display:flex;flex-direction:column;
+}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(255,102,0,0.12);}
+.product-card .img-wrap{
+  background:#fff8f2;height:140px;
+  display:flex;align-items:center;justify-content:center;
+  padding:12px;
+}
+.product-card img{
+  width:100%;height:100%;object-fit:contain;
+}
+.product-card .info{padding:12px 12px 14px;flex:1;display:flex;flex-direction:column;}
+.product-card h3{font-size:13px;font-weight:600;color:#1a1008;margin-bottom:4px;}
+.product-price{
+  font-size:13px;font-weight:700;color:#ff6600;
+  margin-bottom:10px;
+}
+.product-price .mrp{
+  font-size:11px;color:#aaa;text-decoration:line-through;margin-left:4px;font-weight:400;
+}
+.size-select{
+  width:100%;padding:6px 8px;font-size:12px;
+  border:1.5px solid #ffe0cc;border-radius:8px;
+  font-family:'Poppins',sans-serif;color:#333;
+  background:#fff;margin-bottom:10px;outline:none;
+  cursor:pointer;
+}
+.size-select:focus{border-color:#ff6600;}
+.btn-order{
+  display:block;text-align:center;
+  background:#ff6600;color:#fff;
+  border:none;border-radius:10px;
+  padding:8px 10px;font-size:12px;font-weight:600;
+  text-decoration:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;
+  transition:background .2s;
+}
+.btn-order:hover{background:#e05500;}
+.no-results{
+  text-align:center;padding:60px 20px;color:#aaa;
+  font-size:15px;grid-column:1/-1;
+}
+
+/* ── GALLERY ── */
+.gallery-section{padding:0 16px 48px;max-width:1100px;margin:0 auto;}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;margin:0 auto;
+}
+.gallery-grid img{
+  width:100%;height:200px;object-fit:cover;border-radius:14px;
+  border:1.5px solid #ffe8d8;
+}
+
+/* ── CONTACT ── */
+.contact-section{
+  background:linear-gradient(135deg,#1a1008 0%,#2e1a00 100%);
+  padding:56px 24px;
+}
+.contact-inner{
+  max-width:700px;margin:0 auto;text-align:center;
+}
+.contact-inner h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:6px;}
+.contact-inner p{color:#ffa870;font-size:14px;margin-bottom:32px;}
+.contact-cards{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.contact-card{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,102,0,0.3);
+  border-radius:16px;padding:20px 24px;
+  text-align:center;min-width:170px;
+}
+.contact-card .icon{font-size:28px;margin-bottom:8px;}
+.contact-card .label{font-size:11px;color:#ffa870;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.contact-card .value{font-size:15px;font-weight:600;color:#fff;}
+.contact-card a{color:#fff;text-decoration:none;}
+.contact-card a:hover{color:#ff9944;}
+
+/* ── FOOTER ── */
+footer{background:#0b0f0a;color:#555;text-align:center;padding:20px 16px;font-size:13px;}
+footer a{color:#ff6600;text-decoration:none;}
+
+/* ── FLOATING BUTTONS ── */
+.fab-wrap{position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:200;}
+.fab{
+  width:52px;height:52px;border-radius:50%;border:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.18);
+  transition:transform .2s;
+}
+.fab:hover{transform:scale(1.08);}
+.fab-admin{background:#ff6600;color:#fff;font-size:14px;font-weight:700;}
+.fab-wa{background:#25D366;color:#fff;}
+
+/* ── MODAL BASE ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal-bg.open{display:flex;}
+.modal{
+  background:#fff;border-radius:20px;
+  width:100%;max-width:420px;
+  max-height:90vh;overflow-y:auto;
+  padding:28px;
+  position:relative;
+}
+.modal h3{font-size:20px;font-weight:700;color:#1a1008;margin-bottom:20px;}
+.modal-close{
+  position:absolute;top:16px;right:18px;
+  background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;
+}
+.modal-close:hover{color:#ff6600;}
+
+/* ── FORM ELEMENTS ── */
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:600;color:#555;margin-bottom:6px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 14px;border:1.5px solid #e0d0c8;
+  border-radius:10px;font-size:14px;font-family:'Poppins',sans-serif;
+  outline:none;transition:border-color .2s;
+  background:#fff;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#ff6600;}
+.field textarea{resize:vertical;min-height:80px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.btn-primary{
+  width:100%;padding:12px;background:#ff6600;color:#fff;
+  border:none;border-radius:12px;font-size:15px;font-weight:700;
+  font-family:'Poppins',sans-serif;cursor:pointer;transition:background .2s;
+}
+.btn-primary:hover{background:#e05500;}
+.btn-danger{
+  background:#fff;color:#e53935;border:1.5px solid #e53935;
+  padding:8px 16px;border-radius:8px;
+  font-size:13px;font-family:'Poppins',sans-serif;cursor:pointer;
+}
+.btn-danger:hover{background:#ffeaea;}
+.error-msg{color:#e53935;font-size:13px;margin-top:8px;display:none;}
+
+/* ── ADMIN PANEL TABS ── */
+.tab-row{display:flex;gap:8px;margin-bottom:24px;}
+.tab-btn{
+  flex:1;padding:9px;background:#fff8f4;border:1.5px solid #ffe0cc;
+  border-radius:10px;font-size:13px;font-weight:600;
+  font-family:'Poppins',sans-serif;cursor:pointer;color:#888;
+}
+.tab-btn.active{background:#ff6600;color:#fff;border-color:#ff6600;}
+
+/* ── PRODUCT MANAGE LIST ── */
+.manage-list{display:flex;flex-direction:column;gap:10px;}
+.manage-item{
+  display:flex;align-items:center;gap:12px;
+  background:#fff8f4;border:1px solid #ffe0cc;
+  border-radius:12px;padding:10px 12px;
+}
+.manage-item img{width:48px;height:48px;object-fit:contain;border-radius:8px;background:#fff;}
+.manage-item .mi-info{flex:1;min-width:0;}
+.manage-item .mi-name{font-size:13px;font-weight:600;color:#1a1008;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.manage-item .mi-price{font-size:12px;color:#ff6600;font-weight:600;}
+.manage-item .mi-actions{display:flex;gap:6px;flex-shrink:0;}
+.mi-edit,.mi-del{
+  background:none;border:none;font-size:16px;cursor:pointer;padding:4px;
+}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+  background:#1a1008;color:#fff;font-size:13px;font-weight:500;
+  padding:12px 24px;border-radius:30px;z-index:400;
+  opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;
+}
+.toast.show{opacity:1;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:540px){
+  .hero h1{font-size:26px;}
+  .hero-stats{gap:20px;}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .field-row{grid-template-columns:1fr;}
+  header{padding:12px 16px;}
+  .logo-text{font-size:13px;}
+  .btn-call span,.btn-whatsapp span{display:none;}
+}
+@media(max-width:380px){
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">MK</div>
+    <div>
+      <div class="logo-text">Maurya Kirana Store</div>
+      <div class="logo-sub">Sabitpur, Ambedkar Nagar</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="tel:9936123219" class="btn-call">📞 <span>Call Now</span></a>
+    <a href="https://wa.me/919936123219" class="btn-whatsapp" target="_blank">💬 <span>WhatsApp</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🛒 सभी किराना सामान एक जगह</div>
+  <h1>Maurya Kirana Store</h1>
+  <p>"हमारे यहाँ सभी प्रकार की किराना व पूजा सामग्री उचित मूल्य पर उपलब्ध है।"</p>
+  <a href="#products" class="hero-cta">🛍️ Products देखें</a>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>50+</strong><span>Products</span></div>
+    <div class="hero-stat"><strong>14+</strong><span>Years</span></div>
+    <div class="hero-stat"><strong>7AM–9PM</strong><span>Open Daily</span></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<div id="products">
+  <div class="section-title">
+    <h2>हमारे <span>Products</span></h2>
+    <p>WhatsApp पर Order करें — घर पर Delivery</p>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search products... (जैसे rice, dal, oil)">
+      <button onclick="filterProducts()">Search</button>
+    </div>
+  </div>
+
+  <div class="cat-filter" id="cat-filter">
+    <button class="cat-btn active" onclick="filterCat(this,'all')">All</button>
+    <button class="cat-btn" onclick="filterCat(this,'grains')">अनाज & दाल</button>
+    <button class="cat-btn" onclick="filterCat(this,'oil')">Oil & Ghee</button>
+    <button class="cat-btn" onclick="filterCat(this,'spices')">Masale</button>
+    <button class="cat-btn" onclick="filterCat(this,'snacks')">Snacks</button>
+    <button class="cat-btn" onclick="filterCat(this,'dairy')">Dairy</button>
+    <button class="cat-btn" onclick="filterCat(this,'pooja')">Pooja</button>
+    <button class="cat-btn" onclick="filterCat(this,'home')">Home Care</button>
+  </div>
+
+  <div class="products-section">
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="section-title">
+  <h2>Store <span>Gallery</span></h2>
+  <p>हमारी दुकान की झलक</p>
+</div>
+<section class="gallery-section">
+  <div class="gallery-grid">
+    <img src="images/IMG01.jpg" alt="Store view 1" onerror="this.src='https://placehold.co/400x200/ffe8d8/ff6600?text=Store+Photo+1'">
+    <img src="images/IMG02.jpg" alt="Store view 2" onerror="this.src='https://placehold.co/400x200/ffe8d8/ff6600?text=Store+Photo+2'">
+    <img src="images/IMG03.jpg" alt="Store view 3" onerror="this.src='https://placehold.co/400x200/ffe8d8/ff6600?text=Store+Photo+3'">
+    <img src="images/IMG04.jpg" alt="Store view 4" onerror="this.src='https://placehold.co/400x200/ffe8d8/ff6600?text=Store+Photo+4'">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <h2>हमसे संपर्क करें</h2>
+    <p>Order करें या कोई भी जानकारी लें</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <div class="label">Phone</div>
+        <div class="value"><a href="tel:9936123219">9936123219</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <div class="label">Address</div>
+        <div class="value">Sabitpur Market<br>Ambedkar Nagar</div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">⏰</div>
+        <div class="label">Timing</div>
+        <div class="value">7AM – 9PM<br>Daily Open</div>
+      </div>
+      <div class="contact-card">
+        <div class="icon">💬</div>
+        <div class="label">WhatsApp</div>
+        <div class="value"><a href="https://wa.me/919936123219" target="_blank">Order Now</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Maurya Kirana Store · Sabitpur, Ambedkar Nagar ·
+  <a href="tel:9936123219">9936123219</a>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="fab-wrap">
+  <button class="fab fab-wa" onclick="window.open('https://wa.me/919936123219','_blank')" title="WhatsApp Order">💬</button>
+  <button class="fab fab-admin" onclick="openAdminLogin()" title="Admin Panel">⚙</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ── ADMIN LOGIN MODAL ── -->
+<div class="modal-bg" id="login-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <h3>🔐 Admin Login</h3>
+    <div class="field">
+      <label>Admin ID</label>
+      <input type="text" id="admin-id" placeholder="Enter ID">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="admin-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="error-msg" id="login-error">❌ Wrong ID or password</div>
+    <br>
+    <button class="btn-primary" onclick="doLogin()">Login →</button>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL MODAL ── -->
+<div class="modal-bg" id="admin-modal">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close" onclick="closeModal('admin-modal')">✕</button>
+    <h3>⚙️ Admin Panel</h3>
+    <div class="tab-row">
+      <button class="tab-btn active" id="tab-add" onclick="switchTab('add')">➕ Add Product</button>
+      <button class="tab-btn" id="tab-manage" onclick="switchTab('manage')">📋 Manage</button>
+    </div>
+
+    <!-- ADD PRODUCT FORM -->
+    <div id="panel-add">
+      <div class="field">
+        <label>Product Name *</label>
+        <input type="text" id="new-name" placeholder="जैसे Basmati Rice">
+      </div>
+      <div class="field">
+        <label>Image URL or Filename *</label>
+        <input type="text" id="new-img" placeholder="images/RICE.JPG या https://...">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Price (₹) *</label>
+          <input type="number" id="new-price" placeholder="जैसे 60">
+        </div>
+        <div class="field">
+          <label>MRP (₹)</label>
+          <input type="number" id="new-mrp" placeholder="जैसे 75">
+        </div>
+      </div>
+      <div class="field">
+        <label>Sizes (comma से अलग करें)</label>
+        <input type="text" id="new-sizes" placeholder="500g, 1kg, 5kg">
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="new-cat">
+          <option value="all">General</option>
+          <option value="grains">अनाज & दाल</option>
+          <option value="oil">Oil & Ghee</option>
+          <option value="spices">Masale</option>
+          <option value="snacks">Snacks</option>
+          <option value="dairy">Dairy</option>
+          <option value="pooja">Pooja</option>
+          <option value="home">Home Care</option>
+        </select>
+      </div>
+      <button class="btn-primary" onclick="addProduct()">Add Product ✓</button>
+    </div>
+
+    <!-- MANAGE PRODUCTS -->
+    <div id="panel-manage" style="display:none;">
+      <div class="manage-list" id="manage-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EDIT PRODUCT MODAL ── -->
+<div class="modal-bg" id="edit-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('edit-modal')">✕</button>
+    <h3>✏️ Edit Product</h3>
+    <input type="hidden" id="edit-id">
+    <div class="field">
+      <label>Product Name *</label>
+      <input type="text" id="edit-name">
+    </div>
+    <div class="field">
+      <label>Image URL or Filename *</label>
+      <input type="text" id="edit-img">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Price (₹) *</label>
+        <input type="number" id="edit-price">
+      </div>
+      <div class="field">
+        <label>MRP (₹)</label>
+        <input type="number" id="edit-mrp">
+      </div>
+    </div>
+    <div class="field">
+      <label>Sizes (comma से अलग करें)</label>
+      <input type="text" id="edit-sizes">
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <select id="edit-cat">
+        <option value="all">General</option>
+        <option value="grains">अनाज & दाल</option>
+        <option value="oil">Oil & Ghee</option>
+        <option value="spices">Masale</option>
+        <option value="snacks">Snacks</option>
+        <option value="dairy">Dairy</option>
+        <option value="pooja">Pooja</option>
+        <option value="home">Home Care</option>
+      </select>
+    </div>
+    <button class="btn-primary" onclick="saveEdit()">Save Changes ✓</button>
+  </div>
+</div>
+
+<script>
+// ─── DEFAULT PRODUCTS ───────────────────────────────────────────────────────
+const DEFAULT_PRODUCTS = [
+  {id:'p1',name:'Basmati Rice',image:'images/RICE.JPG',price:75,mrp:90,sizes:['1kg','5kg','10kg'],cat:'grains'},
+  {id:'p2',name:'Atta (Gehun)',image:'images/ATTA.JPG',price:45,mrp:55,sizes:['1kg','5kg','10kg'],cat:'grains'},
+  {id:'p3',name:'Sugar',image:'images/Sugar.webp',price:42,mrp:50,sizes:['500g','1kg','5kg'],cat:'grains'},
+  {id:'p4',name:'Salt (Namak)',image:'images/Salt.jpg',price:20,mrp:25,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p5',name:'Refined Oil',image:'images/Refined Oil.jpg',price:130,mrp:150,sizes:['500ml','1L','5L'],cat:'oil'},
+  {id:'p6',name:'Mustard Oil',image:'images/Mustard Oil.webp',price:140,mrp:165,sizes:['500ml','1L','5L'],cat:'oil'},
+  {id:'p7',name:'Tur Dal',image:'images/Tur Dal.webp',price:110,mrp:130,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p8',name:'Moong Dal',image:'images/Moong Dal.jpg',price:95,mrp:115,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p9',name:'Masoor Dal',image:'images/Masoor Dal.webp',price:85,mrp:100,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p10',name:'Chana Dal',image:'images/Chana dal.jpg',price:80,mrp:95,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p11',name:'Kabuli Chana',image:'images/Kabuli Chana.jpg',price:90,mrp:110,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p12',name:'Kala Chana',image:'images/Kala Chana.jpg',price:70,mrp:85,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p13',name:'Poha',image:'images/Poha.webp',price:35,mrp:45,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p14',name:'Suji',image:'images/Suji.webp',price:38,mrp:48,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p15',name:'Besan',image:'images/Besan.webp',price:65,mrp:80,sizes:['500g','1kg'],cat:'grains'},
+  {id:'p16',name:'Tea (Chai)',image:'images/Tea.jpg',price:55,mrp:65,sizes:['100g','250g','500g'],cat:'snacks'},
+  {id:'p17',name:'Coffee',image:'images/Coffee.avif',price:120,mrp:145,sizes:['50g','100g','200g'],cat:'snacks'},
+  {id:'p18',name:'Milk Powder',image:'images/Milk Powder.webp',price:85,mrp:100,sizes:['200g','500g'],cat:'dairy'},
+  {id:'p19',name:'Butter',image:'images/Butter.jpg',price:55,mrp:65,sizes:['100g','500g'],cat:'dairy'},
+  {id:'p20',name:'Ghee',image:'images/Ghee.webp',price:550,mrp:620,sizes:['200ml','500ml','1L'],cat:'oil'},
+  {id:'p21',name:'Biscuits',image:'images/Biscuits.jpg',price:20,mrp:25,sizes:['100g','200g'],cat:'snacks'},
+  {id:'p22',name:'Bread',image:'images/Bread.webp',price:35,mrp:40,sizes:['Small','Large'],cat:'snacks'},
+  {id:'p23',name:'Noodles',image:'images/Noodles.webp',price:15,mrp:18,sizes:['70g','350g'],cat:'snacks'},
+  {id:'p24',name:'Pasta',image:'images/Pasta.jpg',price:45,mrp:55,sizes:['200g','500g'],cat:'snacks'},
+  {id:'p25',name:'Tomato Ketchup',image:'images/Tomato Ketchup.jpg',price:65,mrp:75,sizes:['200g','500g'],cat:'snacks'},
+  {id:'p26',name:'Honey',image:'images/Honey.webp',price:180,mrp:220,sizes:['250g','500g'],cat:'dairy'},
+  {id:'p27',name:'Red Chilli Powder',image:'images/Red Chilli Powde.jpg',price:60,mrp:75,sizes:['100g','250g','500g'],cat:'spices'},
+  {id:'p28',name:'Turmeric Powder',image:'images/Turmeric Powder.jpg',price:55,mrp:70,sizes:['100g','250g'],cat:'spices'},
+  {id:'p29',name:'Coriander Powder',image:'images/Coriander Powder.jpg',price:50,mrp:65,sizes:['100g','250g'],cat:'spices'},
+  {id:'p30',name:'Cumin Seeds',image:'images/Cumin Seeds.jpg',price:80,mrp:100,sizes:['100g','250g'],cat:'spices'},
+  {id:'p31',name:'Mustard Seeds',image:'images/Mustard Seeds.jpg',price:35,mrp:45,sizes:['100g','250g'],cat:'spices'},
+  {id:'p32',name:'Cloves',image:'images/Cloves.jpg',price:90,mrp:110,sizes:['50g','100g'],cat:'spices'},
+  {id:'p33',name:'Cardamom',image:'images/Cardamom.jpg',price:150,mrp:180,sizes:['50g','100g'],cat:'spices'},
+  {id:'p34',name:'Cinnamon',image:'images/Cinnamon.avif',price:70,mrp:90,sizes:['50g','100g'],cat:'spices'},
+  {id:'p35',name:'Black Pepper',image:'images/Black Pepper.jpg',price:120,mrp:145,sizes:['50g','100g'],cat:'spices'},
+  {id:'p36',name:'Detergent',image:'images/Detergent.jpg',price:75,mrp:90,sizes:['500g','1kg'],cat:'home'},
+  {id:'p37',name:'Dishwash Bar',image:'images/Dishwash Bar.jpg',price:25,mrp:30,sizes:['200g','400g'],cat:'home'},
+  {id:'p38',name:'Bath Soap',image:'images/Bath Soap.webp',price:35,mrp:42,sizes:['75g','100g'],cat:'home'},
+  {id:'p39',name:'Shampoo',image:'images/Shampoo.avif',price:85,mrp:100,sizes:['100ml','200ml'],cat:'home'},
+  {id:'p40',name:'Toothpaste',image:'images/Toothpaste.jpg',price:55,mrp:65,sizes:['50g','100g','200g'],cat:'home'},
+  {id:'p41',name:'Toothbrush',image:'images/Toothbrush.avif',price:30,mrp:38,sizes:['Soft','Medium','Hard'],cat:'home'},
+  {id:'p42',name:'Matchbox',image:'images/Matchbox.webp',price:5,mrp:6,sizes:['1 Box','12 Box'],cat:'home'},
+  {id:'p43',name:'Agarbatti',image:'images/Agarbatt.jpg',price:30,mrp:38,sizes:['50 Sticks','100 Sticks'],cat:'pooja'},
+  {id:'p44',name:'Plastic Bucket',image:'images/Plastic Bucket.jpg',price:120,mrp:150,sizes:['10L','15L','20L'],cat:'home'},
+  {id:'p45',name:'Mop',image:'images/Mop.jpg',price:180,mrp:220,sizes:['Standard'],cat:'home'},
+  {id:'p46',name:'Cornflakes',image:'images/Cornflakes.png',price:90,mrp:110,sizes:['250g','500g'],cat:'snacks'},
+  {id:'p47',name:'Oats',image:'images/Oats.jpg',price:75,mrp:90,sizes:['200g','500g','1kg'],cat:'snacks'},
+  {id:'p48',name:'Jam',image:'images/Jam.webp',price:65,mrp:80,sizes:['200g','500g'],cat:'snacks'},
+  {id:'p49',name:'Peanut Butter',image:'images/Peanut Butter.avif',price:120,mrp:145,sizes:['200g','400g'],cat:'snacks'},
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let products = [];
+let currentCat = 'all';
+let searchTerm = '';
+let editingId = null;
+
+function loadProducts(){
+  const saved = localStorage.getItem('mk_products');
+  if(saved){
+    try{ products = JSON.parse(saved); }
+    catch(e){ products = [...DEFAULT_PRODUCTS]; }
+  } else {
+    products = [...DEFAULT_PRODUCTS];
+    saveProducts();
+  }
+}
+function saveProducts(){
+  localStorage.setItem('mk_products', JSON.stringify(products));
+}
+function genId(){
+  return 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function renderProducts(){
+  const grid = document.getElementById('product-grid');
+  const term = searchTerm.trim().toLowerCase();
+  const filtered = products.filter(p=>{
+    const matchCat = currentCat==='all' || p.cat===currentCat;
+    const matchSearch = !term || p.name.toLowerCase().includes(term);
+    return matchCat && matchSearch;
+  });
+
+  if(!filtered.length){
+    grid.innerHTML = '<div class="no-results">🔍 कोई product नहीं मिला।<br>Search बदलें या category चुनें।</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p=>{
+    const sizes = p.sizes || [];
+    const sizeOpts = sizes.map(s=>`<option>${s}</option>`).join('');
+    const sizeSelect = sizes.length > 1
+      ? `<select class="size-select">${sizeOpts}</select>`
+      : sizes.length === 1
+        ? `<div style="font-size:12px;color:#aaa;margin-bottom:10px;">${sizes[0]}</div>`
+        : '';
+    const mrpTag = p.mrp && p.mrp > p.price
+      ? `<span class="mrp">₹${p.mrp}</span>` : '';
+    const waMsg = encodeURIComponent(`नमस्ते! मुझे ${p.name} order करना है।`);
+    return `
+    <div class="product-card">
+      <div class="img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy"
+          onerror="this.src='https://placehold.co/200x140/fff8f2/ff6600?text=${encodeURIComponent(p.name)}'">
+      </div>
+      <div class="info">
+        <h3>${p.name}</h3>
+        <div class="product-price">₹${p.price}${mrpTag}</div>
+        ${sizeSelect}
+        <a class="btn-order"
+          href="https://wa.me/919936123219?text=${waMsg}"
+          target="_blank">🛒 Order on WhatsApp</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── FILTER & SEARCH ─────────────────────────────────────────────────────────
+function filterCat(btn, cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = cat;
+  renderProducts();
+}
+function filterProducts(){
+  searchTerm = document.getElementById('search-input').value;
+  renderProducts();
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('search-input').addEventListener('keydown',e=>{
+    if(e.key==='Enter') filterProducts();
+    if(e.key==='') { searchTerm=''; renderProducts(); }
+  });
+  document.getElementById('search-input').addEventListener('input',e=>{
+    if(!e.target.value){ searchTerm=''; renderProducts(); }
+  });
+});
+
+// ─── MODAL HELPERS ────────────────────────────────────────────────────────────
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+window.addEventListener('click',e=>{
+  if(e.target.classList.contains('modal-bg')) e.target.classList.remove('open');
+});
+
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+// ─── ADMIN LOGIN ─────────────────────────────────────────────────────────────
+function openAdminLogin(){ openModal('login-modal'); }
+function doLogin(){
+  const id = document.getElementById('admin-id').value.trim();
+  const pw = document.getElementById('admin-pass').value;
+  const err = document.getElementById('login-error');
+  if(id==='admin' && pw==='1234'){
+    err.style.display='none';
+    closeModal('login-modal');
+    document.getElementById('admin-id').value='';
+    document.getElementById('admin-pass').value='';
+    switchTab('add');
+    openModal('admin-modal');
+  } else {
+    err.style.display='block';
+  }
+}
+
+// ─── ADMIN TABS ───────────────────────────────────────────────────────────────
+function switchTab(tab){
+  document.getElementById('panel-add').style.display = tab==='add' ? 'block' : 'none';
+  document.getElementById('panel-manage').style.display = tab==='manage' ? 'block' : 'none';
+  document.getElementById('tab-add').classList.toggle('active', tab==='add');
+  document.getElementById('tab-manage').classList.toggle('active', tab==='manage');
+  if(tab==='manage') renderManageList();
+}
+
+// ─── ADD PRODUCT ──────────────────────────────────────────────────────────────
+function addProduct(){
+  const name  = document.getElementById('new-name').value.trim();
+  const img   = document.getElementById('new-img').value.trim();
+  const price = parseFloat(document.getElementById('new-price').value);
+  const mrp   = parseFloat(document.getElementById('new-mrp').value)||0;
+  const sizesRaw = document.getElementById('new-sizes').value.trim();
+  const cat   = document.getElementById('new-cat').value;
+
+  if(!name||!img||!price){ showToast('⚠️ Name, Image और Price ज़रूरी है'); return; }
+
+  const sizes = sizesRaw ? sizesRaw.split(',').map(s=>s.trim()).filter(Boolean) : [];
+  const p = {id:genId(), name, image:img, price, mrp, sizes, cat};
+  products.push(p);
+  saveProducts();
+  renderProducts();
+
+  // Clear form
+  ['new-name','new-img','new-price','new-mrp','new-sizes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('new-cat').value='all';
+
+  showToast('✅ Product add हो गया!');
+  closeModal('admin-modal');
+}
+
+// ─── MANAGE LIST ─────────────────────────────────────────────────────────────
+function renderManageList(){
+  const el = document.getElementById('manage-list');
+  if(!products.length){ el.innerHTML='<p style="color:#aaa;text-align:center;">कोई product नहीं है।</p>'; return; }
+  el.innerHTML = products.map(p=>`
+    <div class="manage-item" id="mi-${p.id}">
+      <img src="${p.image}" alt="${p.name}"
+        onerror="this.src='https://placehold.co/48x48/fff8f2/ff6600?text=${encodeURIComponent(p.name[0])}'">
+      <div class="mi-info">
+        <div class="mi-name">${p.name}</div>
+        <div class="mi-price">₹${p.price}</div>
+      </div>
+      <div class="mi-actions">
+        <button class="mi-edit" onclick="openEdit('${p.id}')" title="Edit">✏️</button>
+        <button class="mi-del" onclick="deleteProduct('${p.id}')" title="Delete">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+
+function deleteProduct(id){
+  if(!confirm('क्या आप इस product को delete करना चाहते हैं?')) return;
+  products = products.filter(p=>p.id!==id);
+  saveProducts();
+  renderProducts();
+  renderManageList();
+  showToast('🗑️ Product delete हो गया');
+}
+
+// ─── EDIT PRODUCT ─────────────────────────────────────────────────────────────
+function openEdit(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  editingId = id;
+  document.getElementById('edit-id').value = id;
+  document.getElementById('edit-name').value = p.name;
+  document.getElementById('edit-img').value = p.image;
+  document.getElementById('edit-price').value = p.price;
+  document.getElementById('edit-mrp').value = p.mrp||'';
+  document.getElementById('edit-sizes').value = (p.sizes||[]).join(', ');
+  document.getElementById('edit-cat').value = p.cat||'all';
+  closeModal('admin-modal');
+  openModal('edit-modal');
+}
+
+function saveEdit(){
+  const id = document.getElementById('edit-id').value;
+  const name  = document.getElementById('edit-name').value.trim();
+  const img   = document.getElementById('edit-img').value.trim();
+  const price = parseFloat(document.getElementById('edit-price').value);
+  const mrp   = parseFloat(document.getElementById('edit-mrp').value)||0;
+  const sizesRaw = document.getElementById('edit-sizes').value.trim();
+  const cat   = document.getElementById('edit-cat').value;
+
+  if(!name||!img||!price){ showToast('⚠️ सभी ज़रूरी fields भरें'); return; }
+
+  const idx = products.findIndex(p=>p.id===id);
+  if(idx===-1) return;
+  products[idx] = {...products[idx], name, image:img, price, mrp,
+    sizes:sizesRaw ? sizesRaw.split(',').map(s=>s.trim()).filter(Boolean) : [],
+    cat};
+  saveProducts();
+  renderProducts();
+  closeModal('edit-modal');
+  showToast('✅ Product update हो गया!');
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+loadProducts();
+renderProducts();
+</script>
+</body>
+</html>
